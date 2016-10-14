@@ -27,3 +27,9 @@ Session.vim
 *~
 # auto-generated tag files
 tags
+
+### Dropbox ###
+# Dropbox settings and caches
+.dropbox
+.dropbox.attr
+.dropbox.cache
