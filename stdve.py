@@ -1,5 +1,13 @@
 #!/usr/bin/env python
 
+import glob
+import os
+
+def images():
+  img_dir = "img/"
+  files = filter(os.path.isfile, glob.glob(img_dir + "*.jpg"))
+  return files.sort(key=lambda x: os.path.getmtime(x), reverse=True)
+
 def head():
     return "\
             <head> \
@@ -28,9 +36,18 @@ def body():
     return "\
             <body> \
             <div style=\"width:100%; text-align:center\"> \
-            <img src=\"img/whose_laughing_now.jpg\" alt=\"Who's laughing now?\">  \
-            </div>   \
-            </body>"
+            <img id=\"img\" alt=\"Who's laughing now?\">  \
+            </div>" \
+            + script() \
+            + "</body>"
+
+def script():
+  return "<script> \
+  function img() { \
+    document.getElementById(\"img\").src=\"img/whos_laughing_now.jpg?\"+new Date().getTime(); \
+  } \
+  img(); \
+  </script>" 
 
 index = open("index.html", "w")
 
