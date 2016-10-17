@@ -12,6 +12,7 @@ def head():
     return "\
             <head> \
             <meta charset=\"UTF-8\"> \
+            <meta name=\"description\" content=\"steve, stdve, dteve, sliky blue\"> \
             <title>stdve</title> \
             <style> \
             body{ \
