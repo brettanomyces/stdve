@@ -44,7 +44,7 @@ with tag('html'):
                             if (idx >= imgs.length){ \
                               idx = 0; \
                             } \
-                            document.getElementById(\"img\").src=imgs[idx]+\"?\"+new Date().getTime(); \
+                            document.getElementById(\"img\").src=imgs[idx]; \
                         };")
 
 
