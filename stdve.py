@@ -32,15 +32,20 @@ with tag('html'):
 
         with tag('body'):
             with tag('div', ('style', 'width:100%; text-align:center')):
-                doc.stag('img', alt='pumped, pummelled and pulverized', id='img')
+                doc.stag('img', alt='pumped, pummelled and pulverized', onclick='next()', id='img')
 
             with tag('script'):
-                text(" \
+                doc.asis(" \
                         var imgs = " + json.dumps(images()) + "; \
-                        function img() {  \
-                        document.getElementById(\"img\").src=imgs[0]+\"?\"+new Date().getTime();  \
-                        }  \
-                        img();")
+                        var idx = 0; \
+                        document.getElementById(\"img\").src=imgs[idx]+\"?\"+new Date().getTime(); \
+                        function next() {  \
+                            idx = idx + 1; \
+                            if (idx >= imgs.length){ \
+                              idx = 0; \
+                            } \
+                            document.getElementById(\"img\").src=imgs[idx]+\"?\"+new Date().getTime(); \
+                        };")
 
 
 index = open("index.html", "w")
