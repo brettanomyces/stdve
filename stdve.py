@@ -2,8 +2,9 @@
 
 import glob
 import os
-import json
 from yattag import Doc, indent
+
+url = "http://www.stdve.com/"
 
 def images():
     img_dir = "img/"
@@ -31,17 +32,20 @@ def generatePage(path, name, img, next_img):
                         ga('create', 'UA-84198117-1', 'auto'); 
                         ga('send', 'pageview');""")
 
-            with tag('body'):
-                with tag('div', ('style', 'width:100%; text-align:center')):
-                    doc.stag('img', id='img', src="http://www.stdve.com/" + img, alt=name.replace('_', ' '), onclick="location.href='http://www.stdve.com/pages/" + next_img[4:-4] + ".html'")
+        with tag('body'):
+            with tag('div', ('style', 'width:100%; text-align:center')):
+                doc.stag('img', id='img', src=url + img, alt=name.replace('_', ' '), onclick="location.href='" + url + "pages/"+ next_img[4:-4] + ".html'")
 
 
     index = open(path + name + ".html", "w")
     index.write(indent(doc.getvalue()))
     index.close()
 
+
 imgs = images()
+
 generatePage("", "index", imgs[0], imgs[1])
+
 for i in range(0, len(imgs), 1):
     j = i + 1
     if j == len(imgs):
