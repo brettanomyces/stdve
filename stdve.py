@@ -33,29 +33,15 @@ def generatePage(path, name, img, next_img):
 
             with tag('body'):
                 with tag('div', ('style', 'width:100%; text-align:center')):
-                    doc.stag('img', alt='pumped, pummelled and pulverized', onclick='next()', id='img')
+                    doc.stag('img', id='img', src="http://www.stdve.com/" + img, alt=name.replace('_', ' '), onclick="location.href='http://www.stdve.com/pages/" + next_img[4:-4] + ".html'")
 
-                with tag('script'):
-                    doc.asis(" \
-                            var imgs = " + json.dumps(images()) + "; \
-                            var idx = 0; \
-                            document.getElementById(\"img\").src=imgs[idx]+\"?\"+new Date().getTime(); \
-                            function next() {  \
-                                idx = idx + 1; \
-                                if (idx >= imgs.length){ \
-                                  idx = 0; \
-                                } \
-                                document.getElementById(\"img\").src=imgs[idx]; \
-                            };")
 
     index = open(path + name + ".html", "w")
     index.write(indent(doc.getvalue()))
     index.close()
 
 imgs = images()
-print(imgs) 
 generatePage("", "index", imgs[0], imgs[1])
-
 for i in range(0, len(imgs), 1):
     j = i + 1
     if j == len(imgs):
