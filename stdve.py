@@ -18,7 +18,7 @@ def generatePage(path, name, img, next_img):
     with tag('html'):
         with tag('head'):
             doc.stag('meta', charset='UTF-8')
-            doc.stag('meta', name='description', content='steve, stdve, dteve, sliky bule')
+            doc.stag('meta', name='description', content='steve, stdve, dteve, silky blue')
             with tag('title'):
                 text('stdve')
             with tag('style'):
