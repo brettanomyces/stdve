@@ -31,11 +31,11 @@ def generatePage(path, name, img, next_img):
                         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); 
                         ga('create', 'UA-84198117-1', 'auto'); 
                         ga('send', 'pageview');""")
+            doc.stag('link', rel='stylesheet', href='http://www.stdve.com/stdve.css', type='text/css')
 
         with tag('body'):
-            with tag('div', ('style', 'width:100%; text-align:center')):
-                doc.stag('img', id='img', src=url + img, alt=name.replace('_', ' '), onclick="location.href='" + url + "pages/"+ next_img[4:-4] + ".html'")
-
+            with tag('div', ('class', 'fill-screen')):
+                doc.stag('img', id='img', klass='make-it-fit', src=url + img, alt=name.replace('_', ' '), onclick="location.href='" + url + "pages/"+ next_img[4:-4] + ".html'")
 
     index = open(path + name + ".html", "w")
     index.write(indent(doc.getvalue()))
